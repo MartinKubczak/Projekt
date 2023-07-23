@@ -6,16 +6,22 @@ import AddExpenseForm from './components/AddExpenseForm';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useSelector } from 'react-redux';
+
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
+
+
 function App() {
-  const [expensess, setExpensess] = useState(['Woda', 'Prad', 'Dupa', 'Plecy', 'Smieci', 'Czajnik', 'Podajnik', 'Ryby', 'Dyby'])
-  const [newExpense, setNewExpense] = useState()
 
   const expenses = useSelector(state => state.expense.expenses)
+  const summary = useSelector(state => state.summary.amount)
+
+  
 
 console.log(expenses)
-const funkcja = () => {
-  console.log({newExpense})
-}
 
   return (
     <>
@@ -30,10 +36,21 @@ const funkcja = () => {
 
           </Grid>
 
+            <Grid xs = {12}>
+              <Grid>
+             <Box sx={{display:'flex', border: '1px dashed grey', justifyContent:'center'}}>
+              <Typography variant="h1">
 
+              Summary : {summary}
+
+              </Typography>
+              </Box>
+              </Grid>
+
+            </Grid>
         
           <Grid xs>
-       <AddExpenseForm ExpVal={newExpense} Submit = {()=>{funkcja()}}/>
+       <AddExpenseForm/>
            </Grid>
         
         <Grid xs={12}>

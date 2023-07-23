@@ -11,6 +11,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { addExpense } from "../redux/expenseSlice";
 import { useDispatch } from "react-redux";
+import { addToSummary } from "../redux/summarySlice";
 const AddExpenseForm = () => {
     const [open, setOpen] = useState(false);
 
@@ -22,6 +23,7 @@ const dispatch = useDispatch()
           amount: newExpenseValue
         }
         dispatch(addExpense(newExpenseObject))
+        dispatch(addToSummary(newExpenseObject.amount))
         setNewExpenseName('')
         setNewExpenseValue(0)
     }
