@@ -20,10 +20,10 @@ const dispatch = useDispatch()
         console.log(newExpenseName, newExpenseValue)
         const newExpenseObject = {
           name: newExpenseName,
-          amount: newExpenseValue
+          budget: newExpenseValue
         }
         dispatch(addExpense(newExpenseObject))
-        dispatch(addToSummary(newExpenseObject.amount))
+        dispatch(addToSummary(newExpenseObject.budget))
         setNewExpenseName('')
         setNewExpenseValue(0)
     }

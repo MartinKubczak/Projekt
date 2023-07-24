@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  expenses:[{name:'Woda', amount:50},
-   {name: 'Prad', amount: 350},
-   {name:'Dupa', amount: 110},
-   {name:'Plecy', amount:30},
-   {name:'Smieci', amount:90},
-   {name:'Czajnik', amount:35},
-   {name:'Podajnik', amount: 99},
-   {name:'Ryby', amount:66},
-   {name:'Dyby', amount: 390}],
+  expenses:[{name:'Woda', budget:50, spend:30},
+   {name: 'Prad', budget: 350, spend:15},
+   {name:'Dupa', budget: 110, spend:80},
+   {name:'Plecy', budget:30, spend:95},
+   {name:'Smieci', budget:90, spend:33},
+   {name:'Czajnik', budget:35, spend:40},
+   {name:'Podajnik', budget: 99, spend: 90},
+   {name:'Ryby', budget:66, spend:50},
+   {name:'Dyby', budget: 390, spend:300}],
 }
 
 export const expenseSlice = createSlice({

@@ -6,13 +6,13 @@ import AddExpenseForm from './components/AddExpenseForm';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useSelector } from 'react-redux';
-
+import { Paper, CssBaseline } from '@mui/material';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-
-
+import { Container } from '@mui/system';
+import ExpenseCard from './components/ExpenseCard'
 
 function App() {
 
@@ -24,15 +24,23 @@ function App() {
 console.log(expenses)
 
   return (
-    <>
+<CssBaseline>
+    <Container disableGutters maxWidth="xl">
+
+
+
+
+
+
     <Grid container spacing={3}>
+      
         <Grid xs={12} >
           <ButtonAppBar/>
         </Grid>
         <Grid container xs={12} spacing={3}>
           
 
-            {expenses.map(expense => <Grid  xs={3}> <Box sx ={{display: 'flex', border: '1px dashed grey', justifyContent: 'center'}}> <Typography> {`${expense.name} : ${expense.amount}`} </Typography> </Box> </Grid>)}
+            {expenses.map(expense => <Grid xs={4}> <ExpenseCard expense={expense}/>  </Grid>)}
 
           </Grid>
 
@@ -58,8 +66,10 @@ console.log(expenses)
         </Grid>
       </Grid>
       
-     </>
+     </Container>
+     </CssBaseline>
   )
+  
 }
 
 export default App
