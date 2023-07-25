@@ -12,6 +12,11 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { addExpense } from "../redux/expenseSlice";
 import { useDispatch } from "react-redux";
 import { addToSummary } from "../redux/summarySlice";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import { Icon } from "@mui/material";
 const AddExpenseForm = () => {
     const [open, setOpen] = useState(false);
 
@@ -20,7 +25,9 @@ const dispatch = useDispatch()
         console.log(newExpenseName, newExpenseValue)
         const newExpenseObject = {
           name: newExpenseName,
-          budget: newExpenseValue
+          budget: newExpenseValue,
+          icon: newExpenseIcon,
+          spend: 0
         }
         dispatch(addExpense(newExpenseObject))
         dispatch(addToSummary(newExpenseObject.budget))
@@ -43,6 +50,7 @@ const dispatch = useDispatch()
 
     const [newExpenseName, setNewExpenseName] = useState('')
     const [newExpenseValue, setNewExpenseValue] = useState(0)
+    const [newExpenseIcon, setNewExpenseIcon] = useState('')
 
 return(
 
@@ -75,7 +83,7 @@ return(
             required
             margin="dense"
             id="expense-value"
-            label="Amount"
+            label="Budget"
             type="number"
             fullWidth
             variant="outlined"
@@ -83,6 +91,18 @@ return(
             onChange = {(e) => {setNewExpenseValue(e.target.value)}}
             inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
           />
+          <InputLabel id="newExpenseIconLabel">Icon</InputLabel>
+          <Select
+          labelId="newExpenseIcon"
+          id="NewExpenseIconSelect"
+          value={newExpenseIcon}
+          label="Icon"
+          onChange={(e)=>setNewExpenseIcon(e.target.value)}
+        >
+          <MenuItem value='water'><Icon>water</Icon></MenuItem>
+          <MenuItem value='girl'><Icon>girl</Icon></MenuItem>
+          <MenuItem value='bolt'><Icon>bolt</Icon></MenuItem>
+        </Select>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>

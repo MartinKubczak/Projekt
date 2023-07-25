@@ -25,7 +25,7 @@ console.log(expenses)
 
   return (
 <CssBaseline>
-    <Container disableGutters maxWidth="xl">
+    <Container disableGutters maxWidth="xl"   >
 
 
 
